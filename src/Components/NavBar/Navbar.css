@@ -1,0 +1,14 @@
+header {
+    align-items: center;
+    /* background-image: banner url here, */
+    display: flex;
+    flex-direction: row;
+    height: 8vh;
+    justify-content: space-between;
+    padding-left: 2vw;
+    padding-right: 2vw;
+}
+
+.logo {
+    height: 5vh;
+}

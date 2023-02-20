@@ -26,10 +26,10 @@ function App() {
     //invoke api function and use useEffect
   }
 
-  const showMain = ({ mainpage }: AppProps) => {
-    mainpage = true
-    setMainPage(mainpage)
-  }
+  // const showMain = ({ mainpage }: AppProps) => {
+  //   mainpage = true
+  //   setMainPage(mainpage)
+  // }
 
   const showInfo = ({ id }: AppProps) => {
     mainpage = false
@@ -70,5 +70,7 @@ function App() {
       
   );
 }
+
+
 
 export default App;
