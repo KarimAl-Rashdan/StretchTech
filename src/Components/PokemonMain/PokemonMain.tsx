@@ -2,7 +2,7 @@ import React from 'react'
 import './PokemonMain.css'
 
 type MainProps = {
-  pokemon: string
+  pokemon: number[]
 }
 
 const PokemonMain = ({ pokemon }): MainProps => {

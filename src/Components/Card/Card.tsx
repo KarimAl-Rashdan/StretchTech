@@ -12,7 +12,7 @@ type CardProps = {
 const Card = ({image, name, pokemon, id}: CardProps) => {
   return (
     <Link to={`/${pokemon}`} style={{ textDecoration: 'none' }}>
-      <div id={id} className="card" >
+      <div className="card" >
         <img src={image} alt={name} className="cardImage" />
         <div className="card-info">
           <p>{name}</p>

@@ -1,6 +1,6 @@
-export const fetchData = (pokemonId: number) => {
-    let path;
-    return fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
+ const fetchData = (pokemonId: string) => {
+
+    return fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
       .then(response => {
         if (response.ok) {
           return response.json()
@@ -9,3 +9,4 @@ export const fetchData = (pokemonId: number) => {
         }
       })
 }
+export default fetchData;
