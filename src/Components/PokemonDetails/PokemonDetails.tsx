@@ -47,7 +47,7 @@ const PokemonDetails = ({ pokemonName: string }) => {
                     ))}
                 </ul>
                 <p className="pokemon-starter-move">
-                    Starter Move: {starterMoves.length > 0 ? starterMoves[0] : 'None'}
+                    Starter Move: {starterMoves.length > 0 ? starterMoves : 'None'}
                 </p>
             </div>
         </div>
