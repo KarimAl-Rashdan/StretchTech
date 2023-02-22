@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { fetchData } from '../../ApiCalls'
 
-const PokemonDetails = ({ pokemonName: string }) => {
+const PokemonDetails: React.FC<{pokemonId: number}> = () => {
     const [pokemon, setPokemon] = useState({})
     const [error, setError] = useState('')
 
     useEffect(() => {
-        fetchData(pokemonName)
+        fetchData(pokemonId)
             .then(data => {
                 setPokemon(data)
             })
@@ -47,7 +47,7 @@ const PokemonDetails = ({ pokemonName: string }) => {
                     ))}
                 </ul>
                 <p className="pokemon-starter-move">
-                    Starter Move: {starterMoves.length > 0 ? starterMoves[0] : 'None'}
+                    Starter Move: {starterMoves.length > 0 ? starterMoves : 'None'}
                 </p>
             </div>
         </div>
