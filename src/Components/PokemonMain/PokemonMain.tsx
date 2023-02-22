@@ -3,15 +3,22 @@ import './PokemonMain.css'
 import Card from "../Card/Card"
 
 type MainProps = {
-  characters: object
+  // characters: {
+  //   sprites : {
+  //     front_default : string
+  //   };
+    image: string;
+    alt: string;
+    num: number;
+  // }
 }
 //Components have only one parameter which is the props object
-const PokemonMain = ({characters}: MainProps) => {
+const PokemonMain = ({image, alt, num}: MainProps) => {
   return (
     <div>
       {/* <h1>{characters}</h1> */}
       <h2>Welcome to Pokemon App Whatever the name is I forget</h2>
-      <Card image={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"} name={"charmander"} id={4}/>
+      <Card image={image} name={alt} id={num}/>
       <Card image={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"} name={"charmander"} id={4}/>
       <Card image={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"} name={"charmander"} id={4}/>
       <Card image={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"} name={"charmander"} id={4}/>

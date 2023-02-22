@@ -10,34 +10,47 @@ import fetchData from "../../ApiCalls"
 type AppProps = {
   characters:number[]
 }
-type PokemonProps = {
-  id: number;
-  name: string;
-  image: string;
+// type PokemonProps = {
+//   id: number;
+//   name: string;
+//   image: string;
+// }
+interface PokemonProps {
+  
+    image: object
+    name: string;
+    id: number;
+    // sprites: object;
+  // setPokemon: any;
 }
-function App() {
-    const [pokemon, setPokemon] = useState({})
+function App() { 
+  // let pokemon: React.FC<PokemonProps>
+  // let pokemon: PokemonProps;
+  // let setPokemon: any;
+  const [pokemon, setPokemon] = useState([])
+  //  const [pokemon, setPokemon] = useState<PokemonProps["pokemon"]>({name: pokemon.name, id:pokemon.id, image:pokemon.sprites.front_default})
     const randomizeIds = () => {
       return Math.floor(Math.random() * 1279).toString()
     }
     useEffect(() => {
       const randomId = randomizeIds()
       fetchData(randomId)
-      .then(data => {
-        // console.log("data", data)
-        return setPokemon(data)})
+      .then(data => setPokemon(data))
       // .catch((error) => {setError(error.message)})
       // getPokemon()
-    }, [])
+      
+    }, [pokemon])
     console.log("pokemon", pokemon)
   // let pokemon = [1,2,3,4,5]
   return (
     <div className="App">
-      <PokemonMain characters={pokemon}/>
+      <PokemonMain image={pokemon.sprites.front_default} alt={pokemon.name} num={pokemon.id}/>
     </div>
   )
 }
+
 export default App;
+// image={pokemon.sprites.front_default} alt={pokemon.name} num={pokemon.id}/>
 // type AppProps = {
 //   pokemon: {
 //     id: string;
