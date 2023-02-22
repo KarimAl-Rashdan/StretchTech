@@ -1,15 +1,21 @@
 import React from 'react'
 import './PokemonMain.css'
+import Card from "../Card/Card"
 
-// interface PokemonMain extends React.Props<any> {
-//   characters:number[]
-// }
+type MainProps = {
+  characters: object
+}
 //Components have only one parameter which is the props object
-const PokemonMain = (props: {characters: number[]}): JSX.Element => {
+const PokemonMain = ({characters}: MainProps) => {
   return (
     <div>
-      <h1>{props.characters}</h1>
+      {/* <h1>{characters}</h1> */}
       <h2>Welcome to Pokemon App Whatever the name is I forget</h2>
+      <Card image={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"} name={"charmander"} id={4}/>
+      <Card image={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"} name={"charmander"} id={4}/>
+      <Card image={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"} name={"charmander"} id={4}/>
+      <Card image={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"} name={"charmander"} id={4}/>
+      <Card image={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"} name={"charmander"} id={4}/>
     </div>
   )
 }

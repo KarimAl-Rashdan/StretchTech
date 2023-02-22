@@ -6,10 +6,31 @@ import PokemonMain from '../PokemonMain/PokemonMain';
 // import PokemonMain from "../PokemonMain/PokemonMain"
 import './App.css';
 // import { Route, Switch} from "react-router-dom"
-// import fetchData from "../../ApiCalls"
-
+import fetchData from "../../ApiCalls"
+type AppProps = {
+  characters:number[]
+}
+type PokemonProps = {
+  id: number;
+  name: string;
+  image: string;
+}
 function App() {
-  let pokemon = [1,2,3,4,5]
+    const [pokemon, setPokemon] = useState({})
+    const randomizeIds = () => {
+      return Math.floor(Math.random() * 1279).toString()
+    }
+    useEffect(() => {
+      const randomId = randomizeIds()
+      fetchData(randomId)
+      .then(data => {
+        // console.log("data", data)
+        return setPokemon(data)})
+      // .catch((error) => {setError(error.message)})
+      // getPokemon()
+    }, [])
+    console.log("pokemon", pokemon)
+  // let pokemon = [1,2,3,4,5]
   return (
     <div className="App">
       <PokemonMain characters={pokemon}/>
@@ -25,7 +46,6 @@ export default App;
 //   error: string;
 //   mainpage: boolean;
 // }
-//   // const [pokemon, setPokemon] = useState([])
 //   // const [chosenPokemon, setChosenPokemon] = useState({})
 //   // const [error, setError] = useState("")
 //   // const [mainpage, setMainPage] = useState(true)
@@ -36,13 +56,6 @@ export default App;
 //   //   .then(data => setPokemon(data))
 //   //   //invoke api function and use useEffect
 //   // }
-//   // useEffect(() => {
-//   //   fetchData("1")
-//   //   .then(data => setPokemon(data))
-//   //   .catch((error) => {setError(error.message)})
-//   //   console.log("pokemon", pokemon)
-//   //   // getPokemon()
-//   // }, [])
 //   // const showMain = ({ mainpage }: AppProps) => {
 //   //   mainpage = true
 //   //   setMainPage(mainpage)

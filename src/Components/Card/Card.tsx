@@ -5,13 +5,13 @@ import "./Card.css"
 type CardProps = {
   image: string, 
   name: string, 
-  pokemon: string, 
+  // pokemon: string, 
   id: number,
 }
-
-const Card = ({image, name, pokemon, id}: CardProps) => {
+//delete pokemon in parameter
+const Card = ({image, name, id}: CardProps) => {
   return (
-    <Link to={`/${pokemon}`} style={{ textDecoration: 'none' }}>
+    <Link to={`/${id}`} style={{ textDecoration: 'none' }}>
       <div className="card" >
         <img src={image} alt={name} className="cardImage" />
         <div className="card-info">
