@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import  fetchData from '../../ApiCalls'
+// import React, { useEffect, useState } from 'react'
+// import  fetchData from '../../ApiCalls'
 //passing in an array of one pokemon object
-const PokemonDetails: React.FC<{pokemonId: number}> = () => {
+// const PokemonDetails: React.FC<{pokemonId: number}> = () => {
     // const [pokemon, setPokemon] = useState({})
     // const [error, setError] = useState('')
 
@@ -52,6 +52,8 @@ const PokemonDetails: React.FC<{pokemonId: number}> = () => {
 //             </div>
 //         </div>
 //     );
-}
+// }
 
-export default PokemonDetails
+// export default PokemonDetails
+
+export {}
