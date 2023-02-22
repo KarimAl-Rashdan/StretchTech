@@ -1,14 +1,18 @@
 import React from 'react'
 import './PokemonMain.css'
 
-const PokemonMain = ({ pokemonList }) => {
+type MainProps = {
+  pokemon: string
+}
 
-  const pokemonList = pokemon.map(pokemon => {
+const PokemonMain = ({ pokemon }): MainProps => {
+
+  const pokeList = poke.map(poke => {
     return (
       <div className="pokeContainer">
         <Link to={`/${pokemon.id}`}>
           <Card 
-            image: { type: string} = {pokemon.image}
+            image: { type: string } = {pokemon.image}
             name: { type: string } = {pokemon.name}
           />
         </Link>
