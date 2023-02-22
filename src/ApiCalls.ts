@@ -1,4 +1,4 @@
-export const fetchData = (pokemon) => {
+export const fetchData = (pokemonId: number) => {
     let path;
     return fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
       .then(response => {
