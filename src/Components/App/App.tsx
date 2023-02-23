@@ -4,7 +4,7 @@ import NavBar from "../NavBar/NavBar"
 // import PokemonDetails from "../PokemonDetails/PokemonDetails"
 import PokemonMain from "../PokemonMain/PokemonMain"
 import './App.css';
-import { Route } from "react-router-dom"
+import { Route, Switch } from "react-router-dom"
 import fetchData from "../../ApiCalls"
 
 type AppProps = {
@@ -59,18 +59,18 @@ function App() {
 
   return (
     <div className="App">
-      {/* <NavBar pageView={mainpage} showMain={showMain}/> */}
+      <NavBar />
       {/* // { error && error } */}
-      {/* <Switch> */}
-      {/* <Route 
+      <Switch>
+      <Route 
           exact path="/"
           render={() => 
             <div>
-            <div style={{display: error ? "block" : "none"}}>{error}</div>
-              <PokemonMain pokemonList={pokemon} showInfo={showInfo}/>
+            {/* <div style={{display: error ? "block" : "none"}}>{error}</div> */}
+              <PokemonMain pokemonList={pokemon}/>
             </div>
           }
-        /> */}
+        />
       {/* <Route 
         exact path="/:id"
         render={({ match }) => {
@@ -86,7 +86,7 @@ function App() {
       {/* <Route>
           <ErrorPage />
         </Route> */}
-      {/* </Switch> */}
+      </Switch>
     </div>
 
 

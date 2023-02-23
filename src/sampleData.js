@@ -421,3 +421,5 @@ const sampleList = { "results": [
         "url": "https://pokeapi.co/api/v2/pokemon/12/"
     },
 ]}
+
+export { sampleData }
