@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom'
 import Card from '../Card/Card'
 
 type MainProps = {
-  pokemon: string[],
+  pokemon: any,
   image: string,
   name: string,
 }
 
-const PokemonMain = ( pokemon : any) => {
+const PokemonMain = ({ pokemon, image, name }: MainProps) => {
 
   const pokeList = pokemon.map((poke: any) => {
     return (

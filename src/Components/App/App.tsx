@@ -18,32 +18,28 @@ type AppProps = {
 
 
 function App() {
-  const [pokemon, setPokemon] = useState({})
+  const [pokemon, setPokemon] = useState<any[]>([])
   const [randomIds, setRandomIds] = useState<string[]>([])
-  // const [randomIds, setRandomIds] = useState([])
-  // const [chosenPokemon, setChosenPokemon] = useState({})
-  // const [error, setError] = useState("")
-  // const [mainpage, setMainPage] = useState(true)
   const dataFetchedRef = useRef(false);
 
   const randomizeIds = () => {
     const nums = [...new Array(5)].map(() => Math.floor(Math.random() * 1008).toString())
-    console.log("nums", nums)
     setRandomIds(nums)
     return nums
   }
   useEffect(() => {
     if (dataFetchedRef.current) return;
     dataFetchedRef.current = true;
-    // console.log("ran id", randomIds)
-    randomizeIds().map((id : any) => {
+    const promises = randomizeIds().map((id) => {
       return fetchData(id)
-      .then(data => {
-        console.log("data", data)
-        return setPokemon(data)})
+    })
+    Promise.all(promises)
+      .then(results => {
+        const randomPokemon = results.map(result => result)
+        setPokemon(randomPokemon)
       })
-    }, [])
-  
+  }, [])
+
   // const getPokemon = ({ pokemon }: AppProps) => {
   //   fetchData(pokemon)
   //   .then(data => setPokemon(data))
@@ -66,7 +62,7 @@ function App() {
       {/* <NavBar pageView={mainpage} showMain={showMain}/> */}
       {/* // { error && error } */}
       {/* <Switch> */}
-        {/* <Route 
+      {/* <Route 
           exact path="/"
           render={() => 
             <div>
@@ -75,7 +71,7 @@ function App() {
             </div>
           }
         /> */}
-        {/* <Route 
+      {/* <Route 
         exact path="/:id"
         render={({ match }) => {
           console.log("look here match", match.params)
@@ -87,16 +83,16 @@ function App() {
           )
         }}
         /> */}
-        {/* <Route>
+      {/* <Route>
           <ErrorPage />
         </Route> */}
       {/* </Switch> */}
     </div>
 
-      
+
   );
 }
 
-  //pass down pokemon object to detailspage
+//pass down pokemon object to detailspage
 
 export default App;
