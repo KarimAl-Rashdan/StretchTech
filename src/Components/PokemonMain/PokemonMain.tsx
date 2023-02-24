@@ -2,29 +2,57 @@ import React from 'react'
 import './PokemonMain.css'
 import Card from "../Card/Card"
 
-type MainProps = {
-  // characters: {
-  //   sprites : {
-  //     front_default : string
-  //   };
-    image: string;
-    alt: string;
-    num: number;
-  // }
+type onePokemon = {
+  characters: [{
+    name: string
+    id:number
+    sprites : {
+      front_default : string
+    };
+  }][]
+  onePokemon: object
+  
+  // character: object
 }
+// type MainProps = {
+//   characters: object[]
+//     sprites : {
+//       front_default : string
+//     };
+//     image: string;
+//     alt: string;
+//     num: number;
+//   // }
+
+// }
 //Components have only one parameter which is the props object
-const PokemonMain = ({image, alt, num}: MainProps) => {
+//compenet for header card list holds all 5 cards and card
+const PokemonMain = ({characters}: onePokemon) => {
+  // const pokemon1 = characters.find(pokemon => pokemon.id === )
+// const PokemonMain = ({image, alt, num}: MainProps) => {
+  console.log("look here", characters)
+  characters.map((character) => {
+    // let character = characters[0]
+    console.log("onePokemon", character)
+    let pokeName = character["name"]
+    let pokeId = character["id"]
+    let pokeSrc = character["sprites"].front_default
+
+  
   return (
     <div>
-      {/* <h1>{characters}</h1> */}
+      <h1>{pokeName}</h1>
       <h2>Welcome to Pokemon App Whatever the name is I forget</h2>
-      <Card image={image} name={alt} id={num}/>
-      <Card image={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"} name={"charmander"} id={4}/>
-      <Card image={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"} name={"charmander"} id={4}/>
-      <Card image={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"} name={"charmander"} id={4}/>
-      <Card image={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"} name={"charmander"} id={4}/>
+      {/* {/* <Card image={pokeSrc} name={pokeName} id={pokeId}/> */}
+      <Card image={pokeSrc} name={pokeName} id={pokeId}/>
+      <Card image={pokeSrc} name={pokeName} id={pokeId}/>
+      <Card image={pokeSrc} name={pokeName} id={pokeId}/>
+      <Card image={pokeSrc} name={pokeName} id={pokeId}/>  
     </div>
   )
+    // })
+})
+return
 }
 export default PokemonMain
 

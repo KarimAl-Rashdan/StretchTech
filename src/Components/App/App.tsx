@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PokemonMain from '../PokemonMain/PokemonMain';
 // import logo from './logo.svg';
 // import NavBar from "../NavBar/NavBar"
@@ -7,9 +7,9 @@ import PokemonMain from '../PokemonMain/PokemonMain';
 import './App.css';
 // import { Route, Switch} from "react-router-dom"
 import fetchData from "../../ApiCalls"
-type AppProps = {
-  characters:number[]
-}
+// type AppProps = {
+//   characters: number[]
+// }
 // type PokemonProps = {
 //   id: number;
 //   name: string;
@@ -24,27 +24,59 @@ interface PokemonProps {
   // setPokemon: any;
 }
 function App() { 
-  // let pokemon: React.FC<PokemonProps>
-  // let pokemon: PokemonProps;
-  // let setPokemon: any;
-  const [pokemon, setPokemon] = useState([])
-  //  const [pokemon, setPokemon] = useState<PokemonProps["pokemon"]>({name: pokemon.name, id:pokemon.id, image:pokemon.sprites.front_default})
-    const randomizeIds = () => {
-      return Math.floor(Math.random() * 1279).toString()
-    }
-    useEffect(() => {
-      const randomId = randomizeIds()
-      fetchData(randomId)
-      .then(data => setPokemon(data))
-      // .catch((error) => {setError(error.message)})
-      // getPokemon()
+  const dataFetchedRef = useRef(false);
+
+  
+
+  const [pokemon, setPokemon] = useState<[]>([])
+  const [randomIds, setRandomIds] = useState<string[]>([])
+  
+  const randomizeIds = () => {
+    const nums= [...new Array(5)].map(() => Math.floor(Math.random() * 1008).toString())
+    console.log("nums", nums)
+    setRandomIds(nums)
+    return nums
+  }
+  useEffect(() => {
+    if (dataFetchedRef.current) return;
+    dataFetchedRef.current = true;
+    const nums = randomizeIds()
+    console.log("ran id", randomIds)
+    nums.map((id: string) => {
+      return fetchData(id)
+      .then(data => {
+        console.log("data", data)
+        console.log("pokemon", pokemon)
+        pokemon.push(data)
+        return setPokemon(pokemon)})
+      })
       
-    }, [pokemon])
-    console.log("pokemon", pokemon)
+    }, [])
+    // const randomNums = randomizeIds()
+    // randomIds:string[]
+    //  const [pokemon, setPokemon] = useState<PokemonProps["pokemon"]>({name: pokemon.name, id:pokemon.id, image:pokemon.sprites.front_default})
+    // const randomId1 = randomizeIds()
+    // const randomId2 = randomizeIds()
+    // useEffect(() => {
+    //     if (dataFetchedRef.current) return;
+    //     dataFetchedRef.current = true;
+    //     fetchData();
+    // },[])
+    // let pokemon: React.FC<PokemonProps>
+    // let pokemon: PokemonProps;
+    // let setPokemon: any;
+      // randomizeIds()
+      // }
+        // const randomId3 = randomizeIds()
+        // setRandomIds(nums)
+        // const randomId4 = randomizeIds()
+        // .catch((error) => {setError(error.message)})
+        // const randomId5 = randomizeIds()
+        // getPokemon()
   // let pokemon = [1,2,3,4,5]
   return (
     <div className="App">
-      <PokemonMain image={pokemon.sprites.front_default} alt={pokemon.name} num={pokemon.id}/>
+      <PokemonMain characters={pokemon} />
     </div>
   )
 }
