@@ -1,68 +1,70 @@
 import React, { useEffect, useState } from 'react'
 import  fetchData from '../../ApiCalls'
-//passing in an array of one pokemon object
-type PokeProps = {
+
+type PokemonDetailsProps = {
     pokemonName: string
 }
-const PokemonDetails = ({pokemonName}:PokeProps) => {
-    const [pokemon, setPokemon] = useState({})
-    const [error, setError] = useState('')
+
+const PokemonDetails: React.FC<PokemonDetailsProps> = ({ pokemonName }) => {
+    const [pokemon, setPokemon] = useState<any>({});
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string>('');
 
     useEffect(() => {
-        console.log("pokemonName", pokemonName)
         fetchData(pokemonName)
-            .then(data => {
-                // console.log("data", data.results)
-                return setPokemon(data["results"])
+            .then((data: any) => {
+                setPokemon(data);
+                setLoading(false)
             })
-            .catch(error => {
-                setError(error)
-            })
-    })
-    return (
-        <h1> Pokemon name: {pokemonName}</h1>
-    )
-//maybe pass down apicall in app
-    // const starterMoves = pokemon.moves.filter(move =>
-    //     move.version_group_details.some(
-    //         versionGroupDetail =>
-    //             versionGroupDetail.move_learn_method.name === 'level-up' &&
-    //             versionGroupDetail.level_learned_at === 1
-    //     )
-    // ).map(move => move.move.name);
+            .catch((error: any) => {
+                setError(error);
+            });
+    }, [pokemonName]);
 
-    // return (
-    //     <div>
-    //         <div>{error && error}</div>
-    //         <div>
-    //             <img src={pokemon.sprites.other.dream_world.front_default} alt="" />
-    //         </div>
-    //         <div className="pokemon-details">
-    //             <h2 className="pokemon-name">{pokemon.name}</h2>
-    //             <p className="pokemon-id">ID: {pokemon.id}</p>
-    //             <p className="pokemon-order">Order: {pokemon.order}</p>
-    //             <p className="pokemon-height">Height: {pokemon.height / 10} m</p>
-    //             <p className="pokemon-weight">Weight: {pokemon.weight / 10} kg</p>
-    //             <p className="pokemon-types">
-    //                 Types: {pokemon.types.map(type => type.type.name).join(', ')}
-    //             </p>
-    //             <p className="pokemon-stats-header">Stats:</p>
-    //             <ul className="pokemon-stats">
-    //                 {pokemon.stats.map(stat => (
-    //                     <li key={stat.stat.name}>
-    //                         <span className="stat-name">{stat.stat.name}:</span>
-    //                         <span className="stat-value">{stat.base_stat}</span>
-    //                     </li>
-    //                 ))}
-    //             </ul>
-    //             <p className="pokemon-starter-move">
-    //                 Starter Move: {starterMoves.length > 0 ? starterMoves : 'None'}
-    //             </p>
-    //         </div>
-    //     </div>
-    // );
-}
+    if (!loading) {
+        const starterMoves = pokemon.moves.filter((move: any) =>
+                move.version_group_details.some(
+                    (versionGroupDetail: any) =>
+                        versionGroupDetail.move_learn_method.name === 'level-up' &&
+                        versionGroupDetail.level_learned_at === 1
+                )
+            )
+            .map((move: any) => move.move.name);
+
+        return (
+            <div>
+                <div>
+                    <img src={pokemon.sprites?.other?.dream_world?.front_default} alt="" />
+                </div>
+                <div className="pokemon-details">
+                    <h2 className="pokemon-name">{pokemon.name}</h2>
+                    <p className="pokemon-id">ID: {pokemon.id}</p>
+                    <p className="pokemon-order">Order: {pokemon.order}</p>
+                    <p className="pokemon-height">Height: {pokemon.height / 10} m</p>
+                    <p className="pokemon-weight">Weight: {pokemon.weight / 10} kg</p>
+                    <p className="pokemon-types">
+                        Types: {pokemon.types?.map((type: any) => type.type.name).join(', ')}
+                    </p>
+                    <p className="pokemon-stats-header">Stats:</p>
+                    <ul className="pokemon-stats">
+                        {pokemon.stats?.map((stat: any) => (
+                            <li key={stat.stat.name}>
+                                <span className="stat-name">{stat.stat.name}:</span>
+                                <span className="stat-value">{stat.base_stat}</span>
+                            </li>
+                        ))}
+                    </ul>
+                    <p className="pokemon-starter-move">
+                        Starter Move: {starterMoves.length > 0 ? starterMoves : 'None'}
+                    </p>
+                </div>
+            </div>
+        );
+    } else {
+        return (
+            <h1>Loading Pokemon</h1>
+        );
+    }
+};
 
 export default PokemonDetails
-
-// export {}
