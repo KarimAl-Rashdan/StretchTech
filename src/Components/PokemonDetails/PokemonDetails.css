@@ -1,0 +1,59 @@
+.pokemon-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: sans-serif;
+}
+
+.pokemon-name {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.pokemon-id,
+.pokemon-order,
+.pokemon-height,
+.pokemon-weight,
+.pokemon-types,
+.pokemon-stats-header,
+.pokemon-stats,
+.pokemon-starter-move {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.pokemon-stats-header {
+    font-weight: bold;
+}
+
+.pokemon-stats {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.stat-name {
+    font-weight: bold;
+}
+
+.stat-value {
+    margin-left: 0.5rem;
+}
+
+/* Mobile styles */
+@media (max-width: 600px) {
+    .pokemon-name {
+        font-size: 1.2rem;
+    }
+
+    .pokemon-id,
+    .pokemon-order,
+    .pokemon-height,
+    .pokemon-weight,
+    .pokemon-types,
+    .pokemon-stats-header,
+    .pokemon-stats,
+    .pokemon-starter-move {
+        font-size: 0.9rem;
+    }
+}
