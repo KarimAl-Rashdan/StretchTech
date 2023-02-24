@@ -1,10 +1,11 @@
- const fetchData = (pokemonId: string) => {
+ const fetchData = (pokemonName?: string) => {
 
   let path;
-  if(!pokemonId) { 
+  if(!pokemonName) { 
     path = '?offset=0&limit=1008'
   } else {
-    path = `${pokemonId}`
+    console.log("endpoint name is true")
+    path = `${pokemonName}`
   }
   
   return fetch(`https://pokeapi.co/api/v2/pokemon/${path}`)
