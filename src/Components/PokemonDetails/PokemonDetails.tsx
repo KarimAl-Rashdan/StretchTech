@@ -12,7 +12,8 @@ const PokemonDetails = ({pokemonName}:PokeProps) => {
         console.log("pokemonName", pokemonName)
         fetchData(pokemonName)
             .then(data => {
-                // console.log("data", data.results)
+                console.log(pokemonName)
+                console.log("data", data)
                 return setPokemon(data["results"])
             })
             .catch(error => {
