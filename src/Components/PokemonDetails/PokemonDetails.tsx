@@ -22,14 +22,17 @@ const PokemonDetails: React.FC<PokemonDetailsProps> = ({ pokemonName }) => {
     }, [pokemonName]);
 
     if (!loading) {
-        const starterMoves = pokemon.moves.filter((move: any) =>
-                move.version_group_details.some(
-                    (versionGroupDetail: any) =>
-                        versionGroupDetail.move_learn_method.name === 'level-up' &&
-                        versionGroupDetail.level_learned_at === 1
-                )
+        const starterMoves = pokemon.moves.filter((thing: any) =>
+            thing.version_group_details[0].move_learn_method.name === 'level-up' &&
+            thing.version_group_details[0].level_learned_at === 1
+        //         versionGroupDetail.level_learned_at === 1
+                // move.version_group_details.some(
+                //     (versionGroupDetail: any) =>
+                //         versionGroupDetail.move_learn_method.name === 'level-up' &&
+                //         versionGroupDetail.level_learned_at === 1
+                // )
             )
-            .map((move: any) => move.move.name);
+            .map((specificMove: any) => specificMove.move.name);
 
         return (
             <div>
