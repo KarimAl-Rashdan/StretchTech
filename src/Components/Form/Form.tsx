@@ -10,7 +10,8 @@ type MainProps = {
   }
 
 const Form = ({searchName} : MainProps) => {
-    const [searchInput , setSearchInput] = useState("")
+    const [searchInput, setSearchInput] = useState("")
+    // const [listOfNames, setListOfNames] = useState([])
 
     const handleChange = (e : InputTarget) => {
         e.preventDefault()
@@ -22,6 +23,15 @@ const Form = ({searchName} : MainProps) => {
         searchName(searchInput.toLowerCase())
     }
 
+    // const datalistNames : any = () => {
+    //     const someArray = ['a', 'b', 'c']
+    //     const names = someArray.map(name => {
+    //         console.log(name)
+    //         return <option >{name}</option>
+    //     })
+    //     return setListOfNames(names)
+    // }
+
     return (
         <form >
             <input 
@@ -31,9 +41,7 @@ const Form = ({searchName} : MainProps) => {
                 onChange={handleChange}
                 required
             />
-            <datalist>
-                <option>Pokemon Name</option>
-            </datalist>
+            {/* <datalist>{listOfNames}</datalist> */}
             <Link to={`/${searchInput.toLowerCase()}`}>
                 <button onClick={handleClick} type="submit">Submit</button>
             </Link>
