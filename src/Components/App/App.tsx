@@ -28,7 +28,7 @@ function App() {
 
   
 
-  const [pokemon, setPokemon] = useState<[]>([])
+  const [pokemon, setPokemon] = useState<object[]>([])
   const [randomIds, setRandomIds] = useState<string[]>([])
   
   const randomizeIds = () => {
@@ -44,7 +44,7 @@ function App() {
     console.log("ran id", randomIds)
     nums.map((id: string) => {
       return fetchData(id)
-      .then(data => {
+      .then((data:any) => {
         console.log("data", data)
         console.log("pokemon", pokemon)
         pokemon.push(data)
