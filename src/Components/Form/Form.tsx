@@ -34,7 +34,7 @@ const Form = ({searchName} : MainProps) => {
             <datalist>
                 <option>Pokemon Name</option>
             </datalist>
-            <Link to={`/${searchInput}`}>
+            <Link to={`/${searchInput.toLowerCase()}`}>
                 <button onClick={handleClick} type="submit">Submit</button>
             </Link>
         </form>

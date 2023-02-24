@@ -27,11 +27,11 @@ function App(): JSX.Element {
       />
       <Route 
         exact path="/:name"
-        render={() => {
+        render={({ match }) => {
           return (
             <div>
             {/* <div style={{display: error ? "block" : "none"}}>{error}</div> */}
-              <PokemonDetails pokemonName={searchedPoke}/> 
+              <PokemonDetails pokemonName={match.params.name}/> 
             </div>
           )
         }}
