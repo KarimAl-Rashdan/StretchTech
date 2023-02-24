@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import './Form.css'
 import { Link } from 'react-router-dom'
 
-// type FormTarget = React.FormEvent<HTMLFormElement>
 type InputTarget = React.ChangeEvent<HTMLInputElement>
 type UIEvent = React.UIEvent<HTMLButtonElement>
 
@@ -19,13 +18,7 @@ const Form = ({searchName} : MainProps) => {
         searchName(searchInput)
     }
 
-    // const handleSubmit = (e : FormTarget) => {
-    //     e.preventDefault()
-    //     searchName(searchInput)
-    // }
-
     const handleClick = (e : UIEvent) => {
-        
         searchName(searchInput.toLowerCase())
     }
 
