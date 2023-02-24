@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import NavBar from "../NavBar/NavBar"
 // import PokemonDetails from "../PokemonDetails/PokemonDetails"
 import PokemonMain from "../PokemonMain/PokemonMain"
@@ -7,38 +7,46 @@ import './App.css';
 import { Route, Switch } from "react-router-dom"
 import fetchData from "../../ApiCalls"
 
-type AppProps = {
-  pokemon: {
-    id: string;
-  }[];
-  chosenPokemon: {};
-  error: string;
-  mainpage: boolean;
-}
+// type AppProps = {
+//   characters: number[]
+// }
+// type PokemonProps = {
+//   id: number;
+//   name: string;
+//   image: string;
+// }
+// interface PokemonProps {
+//     image: object
+//     name: string;
+//     id: number;
+//     sprites: object;
+//   setPokemon: any;
+// }
 
 
 function App() {
-  const [pokemon, setPokemon] = useState<any[]>([])
-  const [randomIds, setRandomIds] = useState<string[]>([])
-  const dataFetchedRef = useRef(false);
+  // const [pokemon, setPokemon] = useState<any[]>([])
+  // const [randomIds, setRandomIds] = useState<string[]>([])
+  // const dataFetchedRef = useRef(false);
 
-  const randomizeIds = () => {
-    const nums = [...new Array(5)].map(() => Math.floor(Math.random() * 1008).toString())
-    setRandomIds(nums)
-    return nums
-  }
-  useEffect(() => {
-    if (dataFetchedRef.current) return;
-    dataFetchedRef.current = true;
-    const promises = randomizeIds().map((id) => {
-      return fetchData(id)
-    })
-    Promise.all(promises)
-      .then(results => {
-        const randomPokemon = results.map(result => result)
-        setPokemon(randomPokemon)
-      })
-  }, [])
+// RANDOMLY GET 5 POKEMON FROM API
+  // const randomizeIds = () => {
+  //   const nums = [...new Array(5)].map(() => Math.floor(Math.random() * 1008).toString())
+  //   setRandomIds(nums)
+  //   return nums
+  // }
+  // useEffect(() => {
+  //   if (dataFetchedRef.current) return;
+  //   dataFetchedRef.current = true;
+  //   const promises = randomizeIds().map((id) => {
+  //     return fetchData(id)
+  //   })
+  //   Promise.all(promises)
+  //     .then(results => {
+  //       const randomPokemon = results.map(result => result)
+  //       setPokemon(randomPokemon)
+  //     })
+  // }, [])
 
   // const getPokemon = ({ pokemon }: AppProps) => {
   //   fetchData(pokemon)
@@ -62,12 +70,12 @@ function App() {
       <NavBar />
       {/* // { error && error } */}
       <Switch>
-      <Route 
+        <Route 
           exact path="/"
           render={() => 
             <div>
             {/* <div style={{display: error ? "block" : "none"}}>{error}</div> */}
-              <PokemonMain pokemonList={pokemon}/>
+              <PokemonMain />
             </div>
           }
         />
@@ -83,13 +91,8 @@ function App() {
           )
         }}
         /> */}
-      {/* <Route>
-          <ErrorPage />
-        </Route> */}
       </Switch>
     </div>
-
-
   );
 }
 
