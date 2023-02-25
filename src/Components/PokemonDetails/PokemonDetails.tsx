@@ -31,30 +31,46 @@ const PokemonDetails: React.FC<PokemonDetailsProps> = ({ pokemonName }) => {
 
         return (
             <div className='pokemon-details'>
-                <div className='image-container'>
-                    <img className='pokemon-image' src={pokemon.sprites?.other?.dream_world?.front_default} alt={`Image of ${pokemon.name}`} />
+                <div className='picture-name-dimensions'>
+                    <div className='name-and-id'>
+                        <h2 className="pokemon-name">{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
+                        <p className="pokemon-id">#{pokemon.id}</p>
+                    </div>
+                    <div className='image-container'>
+                        <img className='pokemon-image' src={pokemon.sprites?.other?.dream_world?.front_default} alt={pokemon.name} />
+                    </div>
+                    <div className='height-and-weight'>
+                        <p className="pokemon-height">Height: {pokemon.height / 10}m</p>
+                        <p className="pokemon-weight">Weight: {pokemon.weight / 10}kg</p>
+                    </div>
                 </div>
-                <div className="pokemon-details">
-                    <h2 className="pokemon-name">{pokemon.name.charAt(0).toUpperCase()+ pokemon.name.slice(1)}</h2>
-                    <p className="pokemon-id">ID: {pokemon.id}</p>
-                    <p className="pokemon-order">Order: {pokemon.order}</p>
-                    <p className="pokemon-height">Height: {pokemon.height / 10} m</p>
-                    <p className="pokemon-weight">Weight: {pokemon.weight / 10} kg</p>
+                <div className="pokemon-info">
                     <p className="pokemon-types">
-                        Types: {pokemon.types.map((type: any) => type.type.name).join(', ')}
+                        Type: {pokemon.types.map((type: any) => type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1)).join(', ')}
                     </p>
-                    <p className="pokemon-stats-header">Stats:</p>
-                    {pokemon.stats.map((stat: any) => (
-                        <div key={stat.stat.name}>
-                            <span className="stat-name">{stat.stat.name}:</span>
-                            <span className="stat-value">{stat.base_stat}</span>
+                    <div className='stats-section'>
+                        <div className='stats-header-container'>
+                            <p className="pokemon-stats-header">Stats:</p>
                         </div>
-                    ))}
-                    <p className="pokemon-starter-move">
-                        Starter Moves: {starterMoves.length > 0 ? starterMoves.map((move: any) => {
-                            return <p>{move}</p>
-                        }) : 'None'}
-                    </p>
+                        <div className='indiv-stats-container'>
+                            {pokemon.stats.map((stat: any) => (
+                                <div className='stats-pair' key={stat.stat.name}>
+                                    <span className="stat-name">{stat.stat.name.charAt(0).toUpperCase() + stat.stat.name.slice(1)}</span>
+                                    <span className="stat-value">{stat.base_stat}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="pokemon-starter-move">
+                        <p className='starter-moves-title'>Starter Moves:</p>
+                        <div className='moves-grid'>
+                            {starterMoves.length > 0 ? starterMoves.map((move: any) => {
+                                return <div className='move-container'>
+                                    <p>{move.charAt(0).toUpperCase() + move.slice(1)}</p>
+                                </div>
+                            }) : 'None'}
+                        </div>
+                    </div>
                 </div>
             </div>
         );
