@@ -4,29 +4,30 @@ import { Link } from "react-router-dom";
 import { fetchData, fetchFive } from "../../ApiCalls";
 import Card from "../Card/Card";
 
+// type PokemonMainProps = {
+//   // image: string,
+//   : any;
+// }
+
 const PokemonMain: React.FC = () => {
   const [pokemon, setPokemon] = useState<any>([]);
-  let fiveArray: any = [];
 
   useEffect(() => {
-    fetchFive().then((data) => setPokemon(data));
+    (async () => {
+      await fetchFive()
+        .then((data) => setPokemon(data.results))
+        .catch((error) => console.log(error));
+    })();
   }, []);
 
   if (pokemon) {
-    fiveArray = pokemon.map((character: any) => {
-      return <Card name={character.name} key={character.name} />;
-    });
-  }
-
-  if (fiveArray.length > 0) {
     return (
-      <main className="main">
-        {/* <Form >
-    </Form> */}
-        <div className="card-container">{fiveArray}</div>
-      </main>
-    );
+      pokemon.map((character: any) => {
+        return <Card name={character.name} key={character.name} />;
+      }));
+  } else {
+    return <h1>Loading Pokemon...</h1>;
   }
-}
+};
 
 export default PokemonMain;

@@ -6,17 +6,20 @@ import "./Card.css";
 type CardProps = {
   // image: string,
   name: string;
+  key: string;
   // pokemon: string,
   // id: number,
 };
 
-const Card: React.FC<CardProps> = ({ name }) => {
-  const [pokeCard, setPokecard] = useState<any>([]);
+const Card: React.FC<CardProps> = ({ name, key }) => {
+  const [pokeCard, setPokecard] = useState<any>({});
   useEffect(() => {
-    fetchData(name).then((data) => setPokecard(data));
+    (async () => {
+      await fetchData(name).then((data) => console.log('data', data))
+      .catch((error) => console.log(error));
+    })();
   });
 
-  console.log("name from card", name);
   if (pokeCard) {
     return (
       <Link to={`/${pokeCard.name}`} style={{ textDecoration: "none" }}>
@@ -32,6 +35,9 @@ const Card: React.FC<CardProps> = ({ name }) => {
         </div>
       </Link>
     );
+  }
+  else {
+    return <h1>Loading Card...</h1>;
   }
 };
 export default Card;

@@ -23,7 +23,11 @@ function App() {
         render={() => (
           <div>
             {/* <div style={{display: error ? "block" : "none"}}>{error}</div> */}
-            <PokemonMain />
+            <main className="main">
+        {/* <Form >
+    </Form> */}
+        <div className="card-container"><PokemonMain /></div>
+      </main>
           </div>
         )}
       />
