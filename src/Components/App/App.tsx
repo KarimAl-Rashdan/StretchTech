@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-// import logo from './logo.svg';
 import NavBar from "../NavBar/NavBar";
 import PokemonDetails from "../PokemonDetails/PokemonDetails";
 import PokemonMain from "../PokemonMain/PokemonMain";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
-import {fetchData} from "../../ApiCalls";
+
 
 function App(): JSX.Element {
   const [searchedPoke, setPoke] = useState("");
@@ -22,12 +21,11 @@ function App(): JSX.Element {
         path="/"
         render={() => (
           <div>
-            {/* <div style={{display: error ? "block" : "none"}}>{error}</div> */}
             <main className="main">
-        {/* <Form >
-    </Form> */}
-        <div className="card-container"><PokemonMain /></div>
-      </main>
+              <div className="card-container">
+                <PokemonMain searchName={searchName}/>
+              </div>
+            </main>
           </div>
         )}
       />
