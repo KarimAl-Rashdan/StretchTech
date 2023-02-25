@@ -1,6 +1,8 @@
 header {
     align-items: center;
-    /* background-image: banner url here, */
+    background-image: url('../../images/banner.png');
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     flex-direction: row;
     height: 8vh;

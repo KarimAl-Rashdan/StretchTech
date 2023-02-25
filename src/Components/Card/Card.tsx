@@ -19,7 +19,7 @@ const Card: React.FC<CardProps> = ({ name }) => {
         .then((data) => setPokecard(data))
         .catch((error) => console.log(error));
     })();
-  });
+  }, [name]);
 
   if (pokeCard) {
     return (

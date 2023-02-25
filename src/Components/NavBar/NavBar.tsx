@@ -8,7 +8,7 @@ const NavBar = ({ }) => {
     return (
         <header className="navBar">
             <Link to='/' className="home-button">
-                <img className="logo" src={logo} alt="logo-img"></img>
+                <img className="logo" src={logo} alt="logo-img"/>
             </Link>
             <h1>Gotta Catch 'Em All</h1>
         </header>
