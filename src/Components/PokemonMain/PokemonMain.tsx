@@ -1,40 +1,33 @@
-import React, { useState, useEffect } from 'react'
-import './PokemonMain.css'
-import { Link } from 'react-router-dom'
-import fetchData from '../../ApiCalls'
-// import Card from '../Card/Card'
+import React, { useState, useEffect } from "react";
+import "./PokemonMain.css";
+import { Link } from "react-router-dom";
+import { fetchData, fetchFive } from "../../ApiCalls";
+import Card from "../Card/Card";
 
-type MainProps = {
-  searchName: any
-}
+// type PokemonMainProps = {
+//   // image: string,
+//   : any;
+// }
 
-type InputEvent = React.ChangeEvent<HTMLInputElement>
+const PokemonMain: React.FC = () => {
+  const [pokemon, setPokemon] = useState<any>([]);
 
-const PokemonMain = ({searchName}: MainProps) => {
+  useEffect(() => {
+    (async () => {
+      await fetchFive()
+        .then((data) => setPokemon(data.results))
+        .catch((error) => console.log(error));
+    })();
+  }, []);
 
-  const [searchInput , setSearchInput] = useState("")
-  
-  const handleChange = (e : InputEvent) => {
-    e.preventDefault();
-    setSearchInput(e.target.value)
-    searchName(searchInput)
+  if (pokemon) {
+    return (
+      pokemon.map((character: any) => {
+        return <Card name={character.name} key={character.name} />;
+      }));
+  } else {
+    return <h1>Loading Pokemon...</h1>;
   }
+};
 
-  return (
-    <main className='main'>
-      <form >
-        <input 
-          type="text" 
-          placeholder="Search..." 
-          onChange={handleChange}
-          value={searchInput}
-          required/>
-          <Link to={`/${searchInput}`}>
-            <button type="submit">Submit</button>
-          </Link>
-      </form>
-    </main>
-  )
-}
-
-export default PokemonMain
+export default PokemonMain;
