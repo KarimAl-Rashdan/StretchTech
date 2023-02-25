@@ -1,10 +1,9 @@
  const fetchData = (pokemonName?: string) => {
-  console.log('poke name', pokemonName)
+
   let path;
   if(!pokemonName) { 
     path = '?offset=0&limit=1008'
   } else {
-    console.log("endpoint name is true")
     path = `${pokemonName}`
   }
   

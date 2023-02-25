@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-// import logo from './logo.svg';
 import NavBar from "../NavBar/NavBar";
 import PokemonDetails from "../PokemonDetails/PokemonDetails";
 import PokemonMain from "../PokemonMain/PokemonMain";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
-import {fetchData} from "../../ApiCalls";
+
 
 function App(): JSX.Element {
   const [searchedPoke, setPoke] = useState("");
@@ -16,33 +15,38 @@ function App(): JSX.Element {
   return (
     <div className="App">
       <NavBar />
-      {/* // { error && error } */}
-      <Route
-        exact
-        path="/"
-        render={() => (
-          <div>
-            {/* <div style={{display: error ? "block" : "none"}}>{error}</div> */}
-            <main className="main">
-        {/* <Form >
-    </Form> */}
-        <div className="card-container"><PokemonMain /></div>
-      </main>
-          </div>
-        )}
-      />
-      <Route
-        exact
-        path="/:name"
-        render={() => {
-          return (
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={() => (
             <div>
-              {/* <div style={{display: error ? "block" : "none"}}>{error}</div> */}
-              <PokemonDetails pokemonName={searchedPoke} />
+              <main className="main">
+                <div className="card-container">
+                  <PokemonMain searchName={searchName}/>
+                </div>
+              </main>
             </div>
-          );
-        }}
-      />
+          )}
+        />
+        <Route
+          exact
+          path="/:name"
+          render={({match}) => {
+            return (
+              <div>
+                {/* <div style={{display: error ? "block" : "none"}}>{error}</div> */}
+                <PokemonDetails pokemonName={match.params.name} />
+              </div>
+            );
+          }}
+        />
+        {/* <Route exact path="*" render={() => {
+          return (
+            <ErrorPage />
+          )
+        }}/> */}
+      </Switch>
     </div>
   );
 }
