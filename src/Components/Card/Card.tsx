@@ -10,11 +10,11 @@ type CardProps = {
   // id: number,
 };
 
-// const Card: React.FC<CardProps> = ({ name }) => {
-//   const [pokeCard, setPokecard] = useState<any>([]);
-//   useEffect(() => {
-//     fetchData(name).then((data) => setPokecard(data));
-//   });
+const Card: React.FC<CardProps> = ({ name }) => {
+  const [pokeCard, setPokecard] = useState<any>([]);
+  useEffect(() => {
+    fetchData(name).then((data) => setPokecard(data));
+  });
 
   console.log("name from card", name);
   if (pokeCard) {
