@@ -8,9 +8,9 @@ const PokemonMain: React.FC = () => {
   const [pokemon, setPokemon] = useState<any>([]);
   let fiveArray: any = [];
 
-  // useEffect(() => {
-  //   fetchFive().then((data) => setPokemon(data));
-  // }, []);
+  useEffect(() => {
+    fetchFive().then((data) => setPokemon(data));
+  }, []);
 
   if (pokemon) {
     fiveArray = pokemon.map((character: any) => {
