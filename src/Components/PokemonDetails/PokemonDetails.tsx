@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {fetchData} from '../../ApiCalls'
+// import {fetchData} from '../../ApiCalls'
 import './PokemonDetails.css'
 
 type PokemonDetailsProps = {
