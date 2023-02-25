@@ -15,32 +15,38 @@ function App(): JSX.Element {
   return (
     <div className="App">
       <NavBar />
-      {/* // { error && error } */}
-      <Route
-        exact
-        path="/"
-        render={() => (
-          <div>
-            <main className="main">
-              <div className="card-container">
-                <PokemonMain searchName={searchName}/>
-              </div>
-            </main>
-          </div>
-        )}
-      />
-      <Route
-        exact
-        path="/:name"
-        render={() => {
-          return (
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={() => (
             <div>
-              {/* <div style={{display: error ? "block" : "none"}}>{error}</div> */}
-              <PokemonDetails pokemonName={searchedPoke} />
+              <main className="main">
+                <div className="card-container">
+                  <PokemonMain searchName={searchName}/>
+                </div>
+              </main>
             </div>
-          );
-        }}
-      />
+          )}
+        />
+        <Route
+          exact
+          path="/:name"
+          render={({match}) => {
+            return (
+              <div>
+                {/* <div style={{display: error ? "block" : "none"}}>{error}</div> */}
+                <PokemonDetails pokemonName={match.params.name} />
+              </div>
+            );
+          }}
+        />
+        {/* <Route exact path="*" render={() => {
+          return (
+            <ErrorPage />
+          )
+        }}/> */}
+      </Switch>
     </div>
   );
 }
