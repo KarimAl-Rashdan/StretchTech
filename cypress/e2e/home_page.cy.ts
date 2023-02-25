@@ -1,4 +1,3 @@
-
 describe('Home Page', () => {
   beforeEach(() => {
     cy.intercept('GET', 'https://pokeapi.co/api/v2/pokemon')
@@ -7,11 +6,9 @@ describe('Home Page', () => {
   })
 
   it('should have a navigation bar with a background', () => {
-    
     cy.get('header')
       .should('have.css', 'background-image')
       .and('include', "http://localhost:3000/static/media/banner.52733dc59b8d8581eda9.png")
-
   })
 
   it('should have a title and logo', () => {
@@ -34,5 +31,56 @@ describe('Home Page', () => {
       .get('button')
   })
 
+  it('should direct you to the pokemon details page when inputting a pokemon name and clicking submit', () => {
+    cy.get('form>input')
+      .type('charmander')
+
+    cy.get('button')
+      .click()
+
+    cy.url().should('eq', 'http://localhost:3000/charmander')
+  })
+
+  it.skip('should not direct you to the pokemon page if the pokemon is spelled incorrectly', () => {
+    cy.get('form>input')
+      .type('chatmander')
+
+    cy.get('button')
+      .click()
+
+    cy.url().should('eq', 'http://localhost:3000/')
+      .and('not.eq', 'http://localhost:3000/chatmander')
+  })
+
+  it('should have 5 pokemon images with their names displayed', () => {
+    cy.get('.card>img')
+      .should('have.length', 5)
+      .and('be.visible')
+      .first()
+      .next()
+      .should('contain', 'bulbasaur')
+
+    cy.get('.card-info>p')
+      .should('have.length', 5)
+      .and('be.visible')
+  })
+
+  it('should direct you to the pokemon details page when clicking on the images', () => {
+    cy.get('.card>img')
+      .first().click()
+      .url().should('eq', 'http://localhost:3000/bulbasaur')
+
+    // cy.get('.card').find('img')
+      // .url().should('eq', 'http://localhost:3000/bulbasaur')
+
+  })
+
+  it('should direct you to the pokemon details page when clicking on another pokemon image', () => {
+    // cy.wait(2000)
+    cy.get('.card')
+      .eq(1).click()
+      .url().should('eq', 'http://localhost:3000/ivysaur')
+
+  })
 
 })
