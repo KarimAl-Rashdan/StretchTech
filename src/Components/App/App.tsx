@@ -7,7 +7,7 @@ import "./App.css";
 import { Route, Switch } from "react-router-dom";
 import {fetchData} from "../../ApiCalls";
 
-function App() {
+function App(): JSX.Element {
   const [searchedPoke, setPoke] = useState("");
 
   const searchName = (submitPoke: string) => {
