@@ -1,3 +1,5 @@
+$background-color: #00ffff;
+
 header {
     align-items: center;
     /* background-image: banner url here, */
@@ -8,7 +10,10 @@ header {
     padding-left: 2vw;
     padding-right: 2vw;
 }
+h1 {
+    color: $background-color;
 
+}
 .logo {
     height: 5vh;
 }
