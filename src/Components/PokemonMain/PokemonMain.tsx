@@ -1,21 +1,33 @@
-import React from 'react'
-import './PokemonMain.css'
-import { Link } from 'react-router-dom'
-import fetchData from '../../ApiCalls'
-import Form from '../Form/Form'
+import React, { useState, useEffect } from "react";
+import "./PokemonMain.css";
+import { Link } from "react-router-dom";
+import { fetchData, fetchFive } from "../../ApiCalls";
+import Card from "../Card/Card";
 
-type MainProps = {
-  searchName: any
-}
+// type PokemonMainProps = {
+//   // image: string,
+//   : any;
+// }
 
-const PokemonMain = ({searchName}: MainProps) => {
+const PokemonMain: React.FC = () => {
+  const [pokemon, setPokemon] = useState<any>([]);
 
+  useEffect(() => {
+    (async () => {
+      await fetchFive()
+        .then((data) => setPokemon(data.results))
+        .catch((error) => console.log(error));
+    })();
+  }, []);
 
-  return (
-    <main className='main'>
-      <Form searchName={searchName}/>
-    </main>
-  )
-}
+  if (pokemon) {
+    return (
+      pokemon.map((character: any) => {
+        return <Card name={character.name} key={character.name} />;
+      }));
+  } else {
+    return <h1>Loading Pokemon...</h1>;
+  }
+};
 
-export default PokemonMain
+export default PokemonMain;
