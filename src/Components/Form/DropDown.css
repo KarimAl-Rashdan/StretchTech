@@ -1,7 +1,7 @@
 .dropdown {
   overflow-y: scroll;
   height:20vh;
-  width:100%;
+  width: 83%;
 }
 
 .dropdown > button {
@@ -10,9 +10,14 @@
 }
 .dropdown-input {
   display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     width:100%;
 }
+option {
+  background-color: white;
+  color: rgb(78, 81, 81)
+}
 option:hover {
-  background-color:purple
+  color: white;
+  background-color:rgb(78, 81, 81)
 }

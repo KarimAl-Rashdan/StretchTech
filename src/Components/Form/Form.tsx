@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './Form.css'
 import { Link } from 'react-router-dom'
 import DropDown from "./DropDown"
+import { GrSearch } from "react-icons/gr"
 
 type InputTarget = React.ChangeEvent<HTMLInputElement>
 type UIEvent = React.UIEvent<HTMLButtonElement>
@@ -53,30 +54,39 @@ const Form: React.FC<MainProps>= ({ dropdown} : MainProps): JSX.Element => {
         <form >
             <h2>Who are you looking for? Search Pokemon by their name</h2>
             <div className='searchContainer'>
-                <input 
-                    className={showDropDown ? "active" : undefined}
-                    onClick={(): void => toggleDropDown()}
-                    // onBlur={(e: React.FocusEvent<HTMLInputElement>): void => dismissHandler(e)}
-                    type="text" 
-                    placeholder="Search..."
-                    value={searchInput}
-                    list="availablePokemon" 
-                    onChange={handleChange}
-                    required
-                />
-                <datalist className="dropdown-input">
-                    {showDropDown && (
-                        <DropDown
-                            filteredNames={filter.length < 1 ? dropdown : filter}
-                            pokemonNames={pokemonNames()}
-                            showDropDown={false}
-                            toggleDropDown={(): void => toggleDropDown()}
-                        />
-                    )}
-                </datalist>
-                <Link to={`/${searchInput.toLowerCase()}`}>
-                    <button onClick={handleClick} type="submit">Submit</button>
-                </Link>
+                <div className="search-wrapper">
+                    
+                    <span className="icon">
+                        <GrSearch />
+                    <input 
+                        
+                        className={showDropDown ? "active" : undefined}
+                        onClick={(): void => toggleDropDown()}
+                        // onBlur={(e: React.FocusEvent<HTMLInputElement>): void => dismissHandler(e)}
+                        type="text" 
+                        placeholder= "Search..."
+                        value={searchInput}
+                        list="dropdown-input" 
+                        onChange={handleChange}
+                        required>
+                    </input>
+                    </span>
+                    <datalist className="dropdown-input">
+                        {showDropDown && (
+                            <DropDown
+                                filteredNames={filter.length < 1 ? dropdown : filter}
+                                pokemonNames={pokemonNames()}
+                                showDropDown={false}
+                                toggleDropDown={(): void => toggleDropDown()}
+                            />
+                        )}
+                    </datalist>
+                </div>
+                <div className="searchButton">
+                    <Link to={`/${searchInput.toLowerCase()}`}>
+                        <button onClick={handleClick} type="submit">Submit</button>
+                    </Link>
+                </div>
             </div>
         </form>
     )
