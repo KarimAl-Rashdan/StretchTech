@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Form.css'
 import { Link } from 'react-router-dom'
-import DropDown from "./DropDown"
+import DropDown from "../DropDown/DropDown"
 import { GrSearch } from "react-icons/gr"
 
 type InputTarget = React.ChangeEvent<HTMLInputElement>
