@@ -1,0 +1,58 @@
+/* .card:hover {
+  outline-style: solid black;
+  transform: scale(1) perspective(1em);
+  outline-width: 10%;
+} */
+@media screen and (max-width: 27em) {
+  .card > a > img {
+    height:20vh;
+    width:75%;
+
+  }
+  .card {
+    width: 80%;
+    margin: 10%;
+    border: 2px solid black;
+    border-radius: 20%;
+    padding: 7%;
+    background-color: white;
+  }
+  .card:hover {
+    box-shadow: 5px 5px purple;
+    outline-style: solid black;
+    transform: scale(1.2) perspective(3em);
+    outline-width: 10%;
+  }
+  
+}
+
+@media screen and (min-width: 27.1em){ 
+  .card > a > img {
+    height:20vh;
+
+  }
+  .card {
+    background-color: white;
+    
+      width: 90%;
+      margin: 10%;
+      border: 2px solid black;
+      border-radius: 20%;
+      padding: 7%;
+    
+    
+  }
+  .card:hover {
+    box-shadow: 5px 5px purple;
+    outline-style: solid black;
+    transform: scale(1.2) perspective(3em);
+    outline-width: 10%;
+  }
+  /* .card {
+    width: fit-content;
+    margin: 10%;
+    border: 2px solid black;
+    border-radius: 20%;
+    padding: 7%;
+  } */
+}

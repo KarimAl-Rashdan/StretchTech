@@ -1,0 +1,41 @@
+/* $background-color: #00ffff; */
+
+header {
+    align-items: center;
+    /* background-image: banner url here, */
+    display: flex;
+    /* flex-direction: row; */
+    height: 8vh;
+    justify-content: flex-start;
+    /* width: 100vw; */
+    padding-left: 2vw;
+    padding-right: 2vw;
+}
+h1 {
+    margin:0vh;
+    font-size: 1.5em;
+    color: black;
+
+}
+.logo {
+    height: 5vh;
+    margin-inline: 1em;
+}
+
+/*all phone sizes*/
+@media screen and (max-width: 27em) {
+    header {
+      background-color: yellow;
+      /* width: max-content;  */
+  
+    }
+  }
+  
+  
+  /*this is laptop and tablet size*/
+  @media screen and (min-width: 27.1em){ 
+    header {
+      background-color: red;
+      width:100%;
+    }
+  }

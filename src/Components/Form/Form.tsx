@@ -1,50 +1,83 @@
 import React, { useState } from 'react'
 import './Form.css'
 import { Link } from 'react-router-dom'
+import DropDown from "./DropDown"
 
 type InputTarget = React.ChangeEvent<HTMLInputElement>
 type UIEvent = React.UIEvent<HTMLButtonElement>
 
 type MainProps = {
-    searchName: any
-  }
+    dropdown:string[]
+}
+type FilterProps = {
+    list:string[]
+    name:string
+}
 
-const Form = ({searchName} : MainProps) => {
+
+const Form: React.FC<MainProps>= ({ dropdown} : MainProps): JSX.Element => {
+
+    const [showDropDown, setShowDropDown] = useState<boolean>(false)
     const [searchInput, setSearchInput] = useState("")
-    // const [listOfNames, setListOfNames] = useState([])
+    const [filter, setFilter] = useState<string[]>([])
+    const pokemonNames = () => {
+        return dropdown
+    }
+    const toggleDropDown = () => {
+        setShowDropDown(!showDropDown)
+    }
+    const dismissHandler = (event: React.FocusEvent<HTMLInputElement>): void => {
+            if(event.currentTarget === event.target) {
+            setShowDropDown(false)
+        }
+    }
 
     const handleChange = (e : InputTarget) => {
         e.preventDefault()
         setSearchInput(e.target.value)
-        searchName(searchInput)
+        
+        const filteredNames = dropdown.reduce<any>((list, name):FilterProps => {
+            if(name.includes(e.target.value.toLowerCase())) {
+                list.push(name)
+            }
+            return list
+        },[])
+        setFilter(filteredNames)
     }
 
     const handleClick = (e : UIEvent) => {
-        searchName(searchInput.toLowerCase())
+        setSearchInput(searchInput.toLowerCase())
     }
-
-    // const datalistNames : any = () => {
-    //     const someArray = ['a', 'b', 'c']
-    //     const names = someArray.map(name => {
-    //         console.log(name)
-    //         return <option >{name}</option>
-    //     })
-    //     return setListOfNames(names)
-    // }
 
     return (
         <form >
-            <input 
-                type="text" 
-                placeholder="Search..." 
-                value={searchInput}
-                onChange={handleChange}
-                required
-            />
-            {/* <datalist>{listOfNames}</datalist> */}
-            <Link to={`/${searchInput.toLowerCase()}`}>
-                <button onClick={handleClick} type="submit">Submit</button>
-            </Link>
+            <h2>Who are you looking for? Search Pokemon by their name</h2>
+            <div className='searchContainer'>
+                <input 
+                    className={showDropDown ? "active" : undefined}
+                    onClick={(): void => toggleDropDown()}
+                    // onBlur={(e: React.FocusEvent<HTMLInputElement>): void => dismissHandler(e)}
+                    type="text" 
+                    placeholder="Search..."
+                    value={searchInput}
+                    list="availablePokemon" 
+                    onChange={handleChange}
+                    required
+                />
+                <datalist className="dropdown-input">
+                    {showDropDown && (
+                        <DropDown
+                            filteredNames={filter.length < 1 ? dropdown : filter}
+                            pokemonNames={pokemonNames()}
+                            showDropDown={false}
+                            toggleDropDown={(): void => toggleDropDown()}
+                        />
+                    )}
+                </datalist>
+                <Link to={`/${searchInput.toLowerCase()}`}>
+                    <button onClick={handleClick} type="submit">Submit</button>
+                </Link>
+            </div>
         </form>
     )
 }

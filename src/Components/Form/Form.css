@@ -1,0 +1,38 @@
+@media screen and (max-width: 27em) {
+  
+   form > h2 {
+      width: 54%;
+      font-size: medium;
+      }
+      form {
+        display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:100%;
+}
+      
+}
+@media screen and (min-width: 27.1em){ 
+  form {
+    width: 100%;
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+  
+  form > h2 {
+    width: 51%;
+    font-size: medium;
+  }
+  .searchContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:20%;
+  }
+
+  .searchContainer > input {
+    width:100%;
+  }
+}
+

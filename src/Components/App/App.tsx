@@ -1,51 +1,55 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "../NavBar/NavBar";
 import PokemonDetails from "../PokemonDetails/PokemonDetails";
 import PokemonMain from "../PokemonMain/PokemonMain";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
+import ErrorPage from "../ErrorPage/ErrorPage";
+import { fetchData } from "../../ApiCalls";
 
-
+type pokeType  = {
+  name: string
+  url?:string
+}
 function App(): JSX.Element {
-  const [searchedPoke, setPoke] = useState("");
+  const [pokemonNames, setPokemonNames] = useState<string[]>([])
+  useEffect(() => {
+    (async () => {
+      await fetchData()
+        .then((data) => {
+          const names = data.results.map((pokeObject: pokeType) => pokeObject["name"])
+          return setPokemonNames(names)})
+        .catch((error) => console.log(error));
+    })();
+  }, []);
 
-  const searchName = (submitPoke: string) => {
-    return setPoke(submitPoke);
-  };
   return (
     <div className="App">
       <NavBar />
       <Switch>
         <Route
-          exact
-          path="/"
+          exact path="/"
           render={() => (
-            <div>
               <main className="main">
                 <div className="card-container">
-                  <PokemonMain searchName={searchName}/>
+                  <PokemonMain datalist={pokemonNames}/>
                 </div>
               </main>
-            </div>
           )}
         />
         <Route
-          exact
-          path="/:name"
+          exact path="/:name"
           render={({match}) => {
             return (
-              <div>
-                {/* <div style={{display: error ? "block" : "none"}}>{error}</div> */}
                 <PokemonDetails pokemonName={match.params.name} />
-              </div>
             );
           }}
         />
-        {/* <Route exact path="*" render={() => {
+        <Route render={() => {
           return (
             <ErrorPage />
           )
-        }}/> */}
+        }}/>
       </Switch>
     </div>
   );

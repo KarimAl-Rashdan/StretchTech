@@ -1,0 +1,18 @@
+.dropdown {
+  overflow-y: scroll;
+  height:20vh;
+  width:100%;
+}
+
+.dropdown > button {
+  width:100%;
+  background-color: white;
+}
+.dropdown-input {
+  display: flex;
+    justify-content: center;
+    width:100%;
+}
+option:hover {
+  background-color:purple
+}

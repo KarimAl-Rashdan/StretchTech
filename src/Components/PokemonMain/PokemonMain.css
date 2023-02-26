@@ -1,13 +1,33 @@
-.main {
+/* .main {
   display: flex;
   flex-direction: column;
   height: 80vh;
-}
+} */
 
-@media only screen and (min-width: 390px) {
+/* @media only screen and (min-width: 390px) {
   .main {
     display: flex;
     flex-direction: row;
     height: 80vh;
+  }
+} */
+
+/*all phone sizes*/
+@media screen and (max-width: 27em) {
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
+  }
+  
+}
+
+
+/*this is laptop and tablet size*/
+@media screen and (min-width: 27.1em){ 
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    max-width: 100%;
   }
 }

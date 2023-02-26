@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {fetchData} from '../../ApiCalls'
 import './PokemonDetails.css'
+import ErrorPage from "../ErrorPage/ErrorPage"
 
 type PokemonDetailsProps = {
     pokemonName: string
@@ -13,20 +14,17 @@ const PokemonDetails: React.FC<PokemonDetailsProps> = ({ pokemonName }) => {
 
     useEffect(() => {
         fetchData(pokemonName)
-            // .then(data => {
-            //    console.log(pokemonName)
-            //     console.log("data", data)
-            //     return setPokemon(data["results"])
             .then((data: any) => {
                 setPokemon(data);
                 setLoading(false)
             })
             .catch((error: any) => {
+                setLoading(false)
                 setError(error);
             });
     }, [pokemonName]);
 
-    if (!loading) {
+    if (!loading && !error) {
         const starterMoves = pokemon.moves.filter((thing: any) =>
             thing.version_group_details[0].move_learn_method.name === 'level-up' &&
             thing.version_group_details[0].level_learned_at === 1
@@ -77,11 +75,21 @@ const PokemonDetails: React.FC<PokemonDetailsProps> = ({ pokemonName }) => {
                 </div>
             </div>
         );
+    } else if(loading) {
+        return (
+            <div>
+                {loading && <h1>Loading Pokemon</h1>}
+            </div>
+        )
     } else {
         return (
-            <h1>Loading Pokemon</h1>
+            <div>
+                {error && <ErrorPage />} 
+            </div> 
         );
     }
+   
+    
 };
 
 export default PokemonDetails
