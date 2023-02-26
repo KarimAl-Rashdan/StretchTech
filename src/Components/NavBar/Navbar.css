@@ -1,15 +1,33 @@
+/* $background-color: #00ffff; */
+
 header {
     align-items: center;
     /* background-image: banner url here, */
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row; */
     height: 8vh;
-    justify-content: space-between;
+    padding-top: 2%;
+    justify-content: flex-start;
+    /* width: 100vw; */
     padding-left: 2vw;
     padding-right: 2vw;
 }
+h1 {
+  font-family: 'Fira Sans', sans-serif;
+    margin:0vh;
+    font-size: 1.5em;
+    color: rgb(78, 81, 81)
 
-
+}
 .logo {
     height: 5vh;
+    margin-inline: 1em;
 }
+.logo:hover {
+  /* box-shadow: 5px 5px purple; */
+    outline-style: solid black;
+    transform: scale(1.2) perspective(3em);
+    outline-width: 10%;
+}
+
+

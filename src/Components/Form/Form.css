@@ -1,0 +1,61 @@
+@media screen and (max-width: 425px) {
+  
+  form > h2 {
+    font-family: 'Fira Sans', sans-serif;
+      width: 55%;
+      font-size: medium;
+      color: rgb(78, 81, 81);
+      }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:100%;
+  }
+  .search-wrapper {
+    width:69%
+  }
+  .searchButton {
+    margin-top: 1%;
+  }  
+}
+@media screen and (min-width: 426px){ 
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .search-wrapper {
+    width:69%
+  }
+  form > h2 {
+    width: 51%;
+    font-size: medium;
+  }
+  .searchContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 45%;
+  }
+
+  .searchContainer > input {
+    width:100%;
+  }
+}
+
+.searchContainer {
+  display:flex;
+  align-items: flex-start;
+}
+span {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+svg {
+  width:8%;
+  /* height:5vh; */
+}
+
