@@ -67,7 +67,13 @@ describe('Home Page', () => {
 
     cy.get('.PageNotFound')
       .should('be.visible')
-      .and('contain', 'Something went wrong: 404- Page Not Found!')
+      .and('contain', 'Something went wrong: 404 - Page Not Found!')
+
+    cy.get('button')
+      .contains('Go Back')
+      .click()
+
+    cy.url().should('eq', 'http://localhost:3000/')
   })
 
   it('should have 5 pokemon images with their names displayed', () => {
