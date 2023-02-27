@@ -30,21 +30,6 @@ The app allows a user to search a large database of Pokemon, and to then view de
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- GETTING STARTED -->
-## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
 ### Installation
 
 1. Clone the repo
@@ -60,7 +45,7 @@ This is an example of how to list things you need to use the software and how to
    npm start
    ```
 4. Use the link that is given in the Terminal and Open in your Browser
-  ```sh
+   ```sh
    Example: http://localhost:3000/
    ```
    
@@ -74,14 +59,14 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Preview
 
-[gif of our app here]
+![ezgif com-video-to-gif](https://user-images.githubusercontent.com/113863021/221703314-2403fa74-4f47-4e32-bfdc-9ff31681ad98.gif)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Contributors
 
 Ryan Baer
-
+<p
 <a href="https://www.linkedin.com/in/ryan-baer-33311114a/" rel="nofollow"> 
     <img src="https://camo.githubusercontent.com/e0278098417dddf9727cfee70a5eb84af38a20705b3bded56cf91cb5feb29d7d/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c696e6b6564496e2d626c75653f7374796c653d666f722d7468652d6261646765266c6f676f3d6c696e6b6564696e266c6f676f436f6c6f723d7768697465" alt="LinkedIn Badge" data-canonical-src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&amp;logo=linkedin&amp;logoColor=white" style="max-width: 100%;">
   </a>
@@ -89,10 +74,12 @@ Ryan Baer
  <a href="https://github.com/RyanBaer42">
     <img src="https://camo.githubusercontent.com/053afc74b933b7e1f909c8e121a327df0657ffa1be49b9397ea940545ebb5318/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d6769746875622d626c61636b3f7374796c653d666f722d7468652d6261646765266c6f676f3d676974687562266c6f676f436f6c6f723d7768697465" alt="GitHub Badge" data-canonical-src="https://img.shields.io/badge/-github-black?style=for-the-badge&amp;logo=github&amp;logoColor=white" style="max-width: 100%;">
   </a>
+  </p>
   
   
 Craig Weller
 
+<p>
 <a href="https://www.linkedin.com/in/craig-weller/" rel="nofollow"> 
     <img src="https://camo.githubusercontent.com/e0278098417dddf9727cfee70a5eb84af38a20705b3bded56cf91cb5feb29d7d/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c696e6b6564496e2d626c75653f7374796c653d666f722d7468652d6261646765266c6f676f3d6c696e6b6564696e266c6f676f436f6c6f723d7768697465" alt="LinkedIn Badge" data-canonical-src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&amp;logo=linkedin&amp;logoColor=white" style="max-width: 100%;">
   </a>
@@ -100,10 +87,12 @@ Craig Weller
  <a href="https://github.com/crgweller">
     <img src="https://camo.githubusercontent.com/053afc74b933b7e1f909c8e121a327df0657ffa1be49b9397ea940545ebb5318/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d6769746875622d626c61636b3f7374796c653d666f722d7468652d6261646765266c6f676f3d676974687562266c6f676f436f6c6f723d7768697465" alt="GitHub Badge" data-canonical-src="https://img.shields.io/badge/-github-black?style=for-the-badge&amp;logo=github&amp;logoColor=white" style="max-width: 100%;">
   </a>
+  </p>
   
   
 Derek Yeh
 
+<p>
 <a href="https://www.linkedin.com/in/derekyeh/" rel="nofollow"> 
     <img src="https://camo.githubusercontent.com/e0278098417dddf9727cfee70a5eb84af38a20705b3bded56cf91cb5feb29d7d/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c696e6b6564496e2d626c75653f7374796c653d666f722d7468652d6261646765266c6f676f3d6c696e6b6564696e266c6f676f436f6c6f723d7768697465" alt="LinkedIn Badge" data-canonical-src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&amp;logo=linkedin&amp;logoColor=white" style="max-width: 100%;">
   </a>
@@ -111,10 +100,12 @@ Derek Yeh
  <a href="https://github.com/derekgithub2">
     <img src="https://camo.githubusercontent.com/053afc74b933b7e1f909c8e121a327df0657ffa1be49b9397ea940545ebb5318/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d6769746875622d626c61636b3f7374796c653d666f722d7468652d6261646765266c6f676f3d676974687562266c6f676f436f6c6f723d7768697465" alt="GitHub Badge" data-canonical-src="https://img.shields.io/badge/-github-black?style=for-the-badge&amp;logo=github&amp;logoColor=white" style="max-width: 100%;">
   </a>
+  </p>
 
 
 Karim Al-Rashdan
 
+<p>
 <a href="https://www.linkedin.com/in/karimal-rashdan/" rel="nofollow"> 
     <img src="https://camo.githubusercontent.com/e0278098417dddf9727cfee70a5eb84af38a20705b3bded56cf91cb5feb29d7d/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c696e6b6564496e2d626c75653f7374796c653d666f722d7468652d6261646765266c6f676f3d6c696e6b6564696e266c6f676f436f6c6f723d7768697465" alt="LinkedIn Badge" data-canonical-src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&amp;logo=linkedin&amp;logoColor=white" style="max-width: 100%;">
   </a>
@@ -122,6 +113,7 @@ Karim Al-Rashdan
  <a href="https://github.com/KarimAl-Rashdan">
     <img src="https://camo.githubusercontent.com/053afc74b933b7e1f909c8e121a327df0657ffa1be49b9397ea940545ebb5318/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d6769746875622d626c61636b3f7374796c653d666f722d7468652d6261646765266c6f676f3d676974687562266c6f676f436f6c6f723d7768697465" alt="GitHub Badge" data-canonical-src="https://img.shields.io/badge/-github-black?style=for-the-badge&amp;logo=github&amp;logoColor=white" style="max-width: 100%;">
   </a>
+  </p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
