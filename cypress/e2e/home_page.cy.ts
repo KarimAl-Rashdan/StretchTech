@@ -1,16 +1,19 @@
 describe('Home Page', () => {
   beforeEach(() => {
-    cy.intercept('GET', 'https://pokeapi.co/api/v2/pokemon/', {
-      statusCode: 200,
-    }).as('getPokemon')
 
+    const baseURL = 'https://pokeapi.co/api/v2/pokemon/'
+
+    cy.intercept('GET', `${baseURL}`
+    ).as('getPokemon')
+    cy.intercept('GET', `${baseURL}/bulbasaur`
+    ).as('getFirst')
+    cy.intercept('GET', 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=5'
+    ).as('fetchFive')
+    // cy.intercept('GET', `${baseURL}/chatmander`).as('wrongRequest')
+    
     cy.visit('http://localhost:3000/')
 
-    // cy.wait('@getPokemon')
-
   })
-
-  // I am currently able to stub the data but I'm not entirely sure it is set up properly. All tests are passing on my end as of now. -Derek
 
   it('should have a navigation bar with a background', () => {
 
@@ -43,33 +46,40 @@ describe('Home Page', () => {
 
   it('should direct you to the pokemon details page when inputting a pokemon name and clicking submit', () => {
 
-    cy.get('form>input')
+    cy.get('input')
       .type('charmander')
-
-    cy.get('button')
+    cy.get('.card')
+      .first()
       .click()
 
-    cy.url().should('eq', 'http://localhost:3000/charmander')
+    cy.url().should('eq', 'http://localhost:3000/bulbasaur')
   })
 
-  it.skip('should not direct you to the pokemon page if the pokemon is spelled incorrectly', () => {
-    cy.get('form>input')
+  it('should direct you to an error page if the user types an incorrect pokemon', () => {
+    cy.get('input')
       .type('chatmander')
 
-    cy.get('button')
+    cy.get('.searchButton')
       .click()
 
-    cy.url().should('eq', 'http://localhost:3000/')
-      .and('not.eq', 'http://localhost:3000/chatmander')
+    cy.wait('@wrongRequest')
+    //   .should('have.property', 'response.statusCode', 404)
+
+    // cy.request({
+    //   method: 'GET', 
+    //   url: 'http://localhost:3000/chatmander'
+    //   }).then((response) => {
+    //     expect(response.status).to.eq(404)
+    //   })
+
+    cy.get('.PageNotFound')
+      .should('be.visible')
+      .and('contain', 'Something went wrong: 404- Page Not Found!')
   })
 
   it('should have 5 pokemon images with their names displayed', () => {
 
-    // cy.intercept('GET', 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=5').as('getFive')
-
-    // cy.wait("@getFive")
-
-    cy.get('.card>img')
+    cy.get('.cardImage')
       .should('have.length', 5)
       .and('be.visible')
       .first()
@@ -83,23 +93,16 @@ describe('Home Page', () => {
 
   it('should direct you to the pokemon details page when clicking on the images', () => {
 
-    // cy.intercept('GET', 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=5').as('getFive')
-
-    // cy.wait("@getFive")
-
-    cy.get('.card>img')
+    cy.wait('@getFirst')
+    cy.get('.cardImage')
       .first().click()
       .url().should('eq', 'http://localhost:3000/bulbasaur')
-
   })
 
   it('should direct you to the pokemon details page when clicking on another pokemon image', () => {
-
-    // cy.intercept('GET', 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=5').as('getFive')
-
-    // cy.wait("@getFive")
-
-    cy.get('.card')
+    
+    cy.wait('@fetchFive')
+    cy.get('.cardImage')
       .eq(1).click()
       .url().should('eq', 'http://localhost:3000/ivysaur')
 
