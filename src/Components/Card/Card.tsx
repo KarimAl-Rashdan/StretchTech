@@ -4,41 +4,44 @@ import { fetchData } from "../../ApiCalls";
 import "./Card.css";
 
 type CardProps = {
-  // image: string,
   name: string;
   key: string;
-  // pokemon: string,
-  // id: number,
 };
+type PokeCardProps = {
+  name?: string;
+  sprites?: {
+    other: {
+      dream_world: {
+        front_default: string
+      }
+    }
+  }
+}
 
-const Card: React.FC<CardProps> = ({ name }) => {
-  const [pokeCard, setPokecard] = useState<any>({});
+const Card: React.FC<CardProps> = ({ name }: CardProps) => {
+  const [pokeCard, setPokecard] = useState<PokeCardProps>({});
   useEffect(() => {
     (async () => {
       await fetchData(name)
-        .then((data) => setPokecard(data))
-        .catch((error) => console.log(error));
+        .then((data:PokeCardProps) => {
+          return setPokecard(data)})
+        .catch((error: string) => console.log(error));
     })();
   }, [name]);
 
-  if (pokeCard) {
-    return (
+  return (
+    <button className="card"> 
       <Link to={`/${pokeCard.name}`} style={{ textDecoration: "none" }}>
-        <div className="card">
-          <img
-            src={pokeCard.sprites?.other?.dream_world?.front_default}
-            alt={pokeCard.name}
-            className="cardImage"
-          />
-          <div className="card-info">
-            <p>{pokeCard.name}</p>
-          </div>
-        </div>
+      <img
+        src={pokeCard.sprites?.other?.dream_world?.front_default}
+        alt={pokeCard.name}
+        className="cardImage"
+      />
+      <div className="card-info">
+        <p>{pokeCard.name}</p>
+      </div>
       </Link>
+    </button>
     );
-  }
-  else {
-    return <h1>Loading Card...</h1>;
-  }
 };
 export default Card;
