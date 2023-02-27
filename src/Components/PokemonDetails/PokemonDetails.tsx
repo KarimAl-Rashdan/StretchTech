@@ -67,7 +67,7 @@ const PokemonDetails: React.FC<PokemonDetailsProps> = ({ pokemonName }) => {
                         <div className='moves-grid'>
                             {starterMoves.length > 0 ? starterMoves.map((move: any) => {
                                 return <div className='move-container'>
-                                    <p>{move.charAt(0).toUpperCase() + move.slice(1)}</p>
+                                    <p className='move-name' >{move.charAt(0).toUpperCase() + move.slice(1)}</p>
                                 </div>
                             }) : 'None'}
                         </div>

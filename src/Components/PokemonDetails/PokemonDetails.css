@@ -50,6 +50,8 @@
 }
 
 .move-container {
+    display: flex;
+    justify-content: center;
     background-color: #e2e0e4;
     border-radius: 5px;
 }
@@ -57,8 +59,10 @@
 .stats-pair {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     margin-left: 1vw;
     gap: 5px;
+    align-items: center;
 }
 
 .stats-section {
@@ -84,6 +88,8 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     height: 20vh;
+    align-items: center;
+    justify-items: center;
 }
 
 .pokemon-details {
