@@ -62,7 +62,6 @@ const Form: React.FC<MainProps>= ({ dropdown} : MainProps): JSX.Element => {
                         
                         className={showDropDown ? "active" : undefined}
                         onClick={(): void => toggleDropDown()}
-                        // onBlur={(e: React.FocusEvent<HTMLInputElement>): void => dismissHandler(e)}
                         type="text" 
                         placeholder= "Search..."
                         value={searchInput}

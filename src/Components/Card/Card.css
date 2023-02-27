@@ -1,8 +1,4 @@
-/* .card:hover {
-  outline-style: solid black;
-  transform: scale(1) perspective(1em);
-  outline-width: 10%;
-} */
+
 @media screen and (max-width: 425px) {
   .cardImage {
     height:20vh;
@@ -48,13 +44,6 @@
     width:85%;
 
   }
-  /* .card {
-    width: fit-content;
-    margin: 10%;
-    border: 2px solid black;
-    border-radius: 20%;
-    padding: 7%;
-  } */
 }
 
 .card-info > p {
