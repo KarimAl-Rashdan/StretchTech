@@ -3,13 +3,14 @@ describe('Home Page', () => {
 
     const baseURL = 'https://pokeapi.co/api/v2/pokemon/'
 
-    cy.intercept('GET', `${baseURL}`
+    cy.intercept('GET', `${baseURL}`, {fixtures: 'examples.json'}
     ).as('getPokemon')
     cy.intercept('GET', `${baseURL}/bulbasaur`
     ).as('getFirst')
+    cy.intercept('GET', `${baseURL}/ivysaur`
+    ).as('getSecond')
     cy.intercept('GET', 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=5'
     ).as('fetchFive')
-    // cy.intercept('GET', `${baseURL}/chatmander`).as('wrongRequest')
     
     cy.visit('http://localhost:3000/')
 
@@ -62,15 +63,7 @@ describe('Home Page', () => {
     cy.get('.searchButton')
       .click()
 
-    cy.wait('@wrongRequest')
-    //   .should('have.property', 'response.statusCode', 404)
-
-    // cy.request({
-    //   method: 'GET', 
-    //   url: 'http://localhost:3000/chatmander'
-    //   }).then((response) => {
-    //     expect(response.status).to.eq(404)
-    //   })
+    cy.wait('@getFirst')
 
     cy.get('.PageNotFound')
       .should('be.visible')
@@ -100,12 +93,11 @@ describe('Home Page', () => {
   })
 
   it('should direct you to the pokemon details page when clicking on another pokemon image', () => {
-    
+    cy.wait('@getSecond')
     cy.wait('@fetchFive')
     cy.get('.cardImage')
       .eq(1).click()
       .url().should('eq', 'http://localhost:3000/ivysaur')
-
   })
 
 })
