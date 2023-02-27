@@ -3,14 +3,14 @@ describe('Home Page', () => {
 
     const baseURL = 'https://pokeapi.co/api/v2/pokemon/'
 
-    cy.intercept('GET', `${baseURL}`, {fixtures: 'examples.json'}
-    ).as('getPokemon')
-    cy.intercept('GET', `${baseURL}/bulbasaur`
-    ).as('getFirst')
-    cy.intercept('GET', `${baseURL}/ivysaur`
-    ).as('getSecond')
-    cy.intercept('GET', 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=5'
-    ).as('fetchFive')
+    cy.intercept('GET', `${baseURL}`, {fixtures: 'examples.json'})
+      .as('getPokemon')
+    cy.intercept('GET', `${baseURL}/bulbasaur`)
+      .as('getFirst')
+    cy.intercept('GET', `${baseURL}/ivysaur`)
+      .as('getSecond')
+    cy.intercept('GET', 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=5')
+      .as('fetchFive')
     
     cy.visit('http://localhost:3000/')
 
@@ -46,14 +46,14 @@ describe('Home Page', () => {
   })
 
   it('should direct you to the pokemon details page when inputting a pokemon name and clicking submit', () => {
-
     cy.get('input')
       .type('charmander')
-    cy.get('.card')
+
+    cy.get('button')
       .first()
       .click()
 
-    cy.url().should('eq', 'http://localhost:3000/bulbasaur')
+    cy.url().should('eq', 'http://localhost:3000/charmander')
   })
 
   it('should direct you to an error page if the user types an incorrect pokemon', () => {
@@ -75,8 +75,10 @@ describe('Home Page', () => {
     cy.get('.cardImage')
       .should('have.length', 5)
       .and('be.visible')
+
+    cy.wait('@getFirst')
+      .get('.card-info')
       .first()
-      .next()
       .should('contain', 'bulbasaur')
 
     cy.get('.card-info>p')
@@ -99,5 +101,4 @@ describe('Home Page', () => {
       .eq(1).click()
       .url().should('eq', 'http://localhost:3000/ivysaur')
   })
-
 })
