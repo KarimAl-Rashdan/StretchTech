@@ -1,4 +1,4 @@
-
+@media (max-width: 600px) {
   .PageNotFound {
     background-size: cover;
     height: 100vh;
@@ -13,3 +13,20 @@
     font-size: small;
     border-radius: 20px;
   }
+}
+
+@media (min-width: 601px) {
+  .PageNotFound {
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .backButton {
+    height: 5%;
+    width: 10%;
+    border-radius: 20px;
+  }
+}
