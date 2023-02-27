@@ -6,8 +6,6 @@
 @media screen and (max-width: 425px) {
   .cardImage {
     height:20vh;
-    width:75%;
-
   }
   .card {
     width: 80%;
