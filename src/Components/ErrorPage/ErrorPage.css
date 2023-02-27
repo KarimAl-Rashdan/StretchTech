@@ -1,4 +1,15 @@
-.PageNotFound {
-  background-size: cover;
-  height: 100vh;
-}
+
+  .PageNotFound {
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .backButton {
+    height: 10%;
+    width: 20%;
+    font-size: small;
+    border-radius: 20px;
+  }

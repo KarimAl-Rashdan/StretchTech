@@ -12,7 +12,7 @@ const ErrorPage = () => {
 
   return (
     <div className="PageNotFound" style={{backgroundImage: `url(${coverImage})`} }>
-      <h2>Something went wrong: 404- Page Not Found!</h2>
+      <h2>Something went wrong: 404 - Page Not Found!</h2>
       <button className="backButton" onClick={handleGoBack}>Go Back</button>
     </div>
   )
