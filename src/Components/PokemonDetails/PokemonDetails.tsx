@@ -38,7 +38,7 @@ const PokemonDetails: React.FC<PokemonDetailsProps> = ({ pokemonName }) => {
                         <p className="pokemon-id">#{pokemon.id}</p>
                     </div>
                     <div className='image-container'>
-                        <img className='pokemon-image' src={pokemon.sprites?.other?.dream_world?.front_default} alt={pokemon.name} />
+                        <img className='pokemon-image' src={pokemon.sprites && pokemon.sprites.other && pokemon.sprites.other['official-artwork'] && pokemon.sprites.other['official-artwork'].front_default} alt={pokemon.name} />
                     </div>
                     <div className='height-and-weight'>
                         <p className="pokemon-height">Height: {pokemon.height / 10}m</p>

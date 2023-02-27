@@ -11,7 +11,7 @@ type PokeCardProps = {
   name?: string;
   sprites?: {
     other: {
-      dream_world: {
+      'official-artwork': {
         front_default: string
       }
     }
@@ -33,7 +33,7 @@ const Card: React.FC<CardProps> = ({ name }: CardProps) => {
     <button className="card"> 
       <Link to={`/${pokeCard.name}`} style={{ textDecoration: "none" }}>
       <img
-        src={pokeCard.sprites?.other?.dream_world?.front_default}
+      src={pokeCard.sprites?.other['official-artwork'].front_default} 
         alt={pokeCard.name}
         className="cardImage"
       />
