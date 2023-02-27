@@ -51,7 +51,7 @@ The app allows a user to search a large database of Pokemon, and to then view de
    
 ### View without installation
   
-  Simply go to [our deployed link](https://vercel.com/karimal-rashdan/stretch-tech/92q2wgH6zKM8v7CbGJ57ysszo6e6)
+  Simply go to [our deployed link](https://stretch-tech-iota.vercel.app/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
